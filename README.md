@@ -5,7 +5,7 @@ Ansible is an open-source configuration management tool that automates cloud pro
 ## Integrate Ansible with Azure Cloud
 Integrating Ansible with Microsoft Azure allows you to automate and manage your Azure infrastructure using Ansible playbooks and modules. Ansible provides a collection of Azure-specific modules that enable you to provision and configure resources in Azure.
 
-# To configure Azure credentials, you need the following information:
+## To configure Azure credentials, you need the following information:
 Your Azure subscription ID and tenant ID
 The service principal application ID and secret
 
@@ -13,11 +13,11 @@ Pre-requisites:
 Azure account subscription, click here if you don't have one.
 Azure CLI needs to be installed.
 Service principal to create any resources in Azure cloud using Azure cloud shell or Azure CLI
-# step 1 Login to Azure
+## step 1 Login to Azure
 'az login'
 Enter Microsoft credentials
 
-# step 2 Create Azure Service Principal
+## step 2 Create Azure Service Principal
 Run the following commands to create an Azure Service Principal:
 
 az ad sp create-for-rbac --name <service-principal-name> \ 
@@ -26,7 +26,7 @@ az ad sp create-for-rbac --name <service-principal-name> \
 
 Save the above output in a file as you will not be able retrieve later.
 
-# step 3 Create an Ansible playbook
+## step 3 Create an Ansible playbook
 Create a simple playbook to create resource group in Azure. Make sure you modify the name of the resource group and location below.
 
 ---
@@ -46,7 +46,7 @@ Create a simple playbook to create resource group in Azure. Make sure you modify
         location: "eastus"
 
 
-# step 4 Create Azure YAML build pipeline:
+## step 4 Create Azure YAML build pipeline:
 Login to Azure Devops --> https://dev.azure.com
 
 Select project dashboard.
@@ -59,7 +59,7 @@ AZURE_CLIENT_ID
 AZURE_SECRET
 AZURE_TENANT
 
-# step 5 Add below tasks:
+## step 5 Add below tasks:
 Install Ansible on build agent
 Install Ansible rm module on build agent
 Execute Ansible playbook for creating resource group in Azure cloud.
