@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- script: pip3 install "ansible==2.9.17"
+  displayName: 'Install Ansible on Build Agent'
+
+- script: pip3 install ansible[azure]
+  displayName: 'Install Ansible RM module on the agent'
+
+- script: ansible-playbook create-rg.yml
+  displayName: 'Execute the playbook in the agent to create RG in Azure Cloud'
+  env:
+    AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+    AZURE_CLIENT_ID: $(AZURE_CLIENT_ID)
+    AZURE_SECRET: $(AZURE_SECRET) 
+    AZURE_TENANT: $(AZURE_TENANT) 
